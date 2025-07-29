@@ -1,0 +1,153 @@
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Link,
+  Container,
+  Image,
+  Card,
+  SimpleGrid,
+  Icon
+} from "@chakra-ui/react"
+import type { Route } from "./+types/home"
+import { FiExternalLink } from "react-icons/fi"
+
+export function meta({ }: Route.MetaArgs) {
+  return [
+    { title: "Beckett Oliphant" },
+    { name: "description", content: "Shopify developer working on Affilitrak and other projects." },
+  ]
+}
+
+export default function Home() {
+  return (
+    <Box bg="gray.900" minH="100vh" color="white">
+      <Container maxW="container.md" py={{ base: "8", md: "16" }} px={{ base: "4", md: "6" }}>
+        <VStack align="start" gap={{ base: "6", md: "8" }} fontSize={{ base: "md", md: "lg" }}>
+
+          <Image
+            src="https://pbs.twimg.com/profile_images/1872747037055135744/_vkyVzSW_400x400.jpg"
+            alt="Beckett Oliphant"
+            borderRadius="full"
+            boxSize={{ base: "120px", md: "150px" }}
+            mx="auto"
+          />
+
+          <Heading size="xl">hi i'm beckett :)</Heading>
+
+          <Box w="100%">
+            <Text fontWeight="bold">currently working on:</Text>
+            <Link href="https://apps.shopify.com/affilitrak" target="_blank" rel="noopener noreferrer" color="blue.300">
+              affilitrak (shopify app)
+            </Link>
+          </Box>
+
+          <Box w="100%">
+            <Card.Root bg="gray.800" mt="4" w="100%" overflow="hidden">
+              <Card.Body p={{ base: "4", md: "6" }}>
+                <Box
+                  display="flex"
+                  flexDirection={{ base: "column", md: "row" }}
+                  alignItems={{ base: "center", md: "center" }}
+                  gap={{ base: "4", md: "6" }}
+                  mb="4"
+                  w="100%"
+                >
+                  <Image
+                    src="https://cdn.shopify.com/s/files/1/0830/0947/0774/files/AffilitrakLogo1_c3663d38-fcd5-407c-b6f7-a81c407c1351.jpg?v=1753050083"
+                    alt="Affilitrak Logo"
+                    boxSize={{ base: "120px", md: "150px" }}
+                    flexShrink="0"
+                    borderRadius="15px"
+                  />
+                  <Box textAlign={{ base: "center", md: "left" }} flex="1" minW="0">
+                    <Heading size="md" mb="3">Affilitrak</Heading>
+                    <Text fontSize="sm" color="gray.400" wordBreak="break-word">Simple affiliate marketing app for Shopify. Track referrals, manage affiliates, auto-pay commissions.</Text>
+                    <Text fontSize="sm" color="gray.400" mt="2" wordBreak="break-word">Features: Custom commissions, coupon tracking, PayPal integration, multi-level marketing.</Text>
+                    <Text fontSize="sm" color="gray.400" mt="2">Rating: 5.0 (6 reviews)</Text>
+                    <Link href="https://apps.shopify.com/affilitrak" color="blue.300" fontSize="sm" display="inline-flex" alignItems="center" mt="2" flexWrap="wrap">
+                      View on Shopify App Store
+                      <Icon as={FiExternalLink} ml="1" boxSize="3" />
+                    </Link>
+                  </Box>
+                </Box>
+              </Card.Body>
+            </Card.Root>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">check out my Shopify blog:</Text>
+            <SimpleGrid columns={{ base: 1, md: 2 }} gap="4" mt="4">
+              <Card.Root asChild>
+                <Link href="/shopify/post1">
+                  <Card.Header>
+                    <Heading size="md">placeholder for now</Heading>
+                  </Card.Header>
+                  <Card.Body>
+                    <Text fontSize="sm" color="gray.400">still need to write the post</Text>
+                  </Card.Body>
+                </Link>
+              </Card.Root>
+            </SimpleGrid>
+            <Link href="/shopify" color="blue.300" fontSize="sm" mt="2" display="block">See all posts →</Link>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">what's this site for?</Text>
+            <Text>mainly to show off my projects and to act as a homepage for my shopify blog. i'm not looking for work, just showing my stuff :)</Text>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">my projects:</Text>
+            <Box as="ul" pl="4" listStyleType="disc" mt="4">
+              <Box as="li">
+                <Link href="https://github.com/becketto/eloTemplate" target="_blank" rel="noopener noreferrer" color="blue.300">
+                  ELO Template - TypeScript Starter
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link href="https://github.com/becketto/fileUploadShopify" target="_blank" rel="noopener noreferrer" color="blue.300">
+                  Shopify File Upload Tool
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link href="https://github.com/becketto/orbitSim" target="_blank" rel="noopener noreferrer" color="blue.300">
+                  Orbit Simulator
+                </Link>
+              </Box>
+              <Box as="li">
+                <Link href="https://github.com/becketto/editUIShopifyPLRS" target="_blank" rel="noopener noreferrer" color="blue.300">
+                  Shopify UI Editor
+                </Link>
+              </Box>
+            </Box>
+            <Link href="https://github.com/becketto" target="_blank" rel="noopener noreferrer" color="blue.300" fontSize="sm" mt="2" display="block">
+              See more on GitHub →
+            </Link>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">my stack</Text>
+            <Text>typescript, remix, prisma (with postgres), react, chakra or polaris for ui</Text>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">my twitter:</Text>
+            <Link href="https://x.com/ecombeckett" target="_blank" rel="noopener noreferrer" color="blue.300">
+              https://x.com/ecombeckett
+            </Link>
+          </Box>
+
+          <Box w="100%">
+            <Text fontWeight="bold">my youtube channel:</Text>
+            <Link href="https://www.youtube.com/@beckettoliphant" target="_blank" rel="noopener noreferrer" color="blue.300">
+              https://www.youtube.com/@beckettoliphant
+            </Link>
+          </Box>
+
+        </VStack>
+      </Container>
+    </Box>
+  )
+}
