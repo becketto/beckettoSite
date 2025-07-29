@@ -10,6 +10,7 @@ import type { Route } from "./+types/root"
 import { Provider } from "./components/ui/provider"
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/favicon.png" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
