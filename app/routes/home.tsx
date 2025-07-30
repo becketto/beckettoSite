@@ -8,10 +8,13 @@ import {
   Image,
   Card,
   SimpleGrid,
-  Icon
+  Icon,
+  Slider
 } from "@chakra-ui/react"
 import type { Route } from "./+types/home"
 import { FiExternalLink } from "react-icons/fi"
+import { useState, useRef, useEffect } from "react"
+import { GifPlayer } from "../services/gifService"
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -21,6 +24,38 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [gifSpeed, setGifSpeed] = useState(1)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const gifPlayerRef = useRef<GifPlayer | null>(null)
+
+  useEffect(() => {
+    const gifUrl = "https://cdn.shopify.com/s/files/1/0830/0947/0774/files/beckettSpinsSmall.gif?v=1753905746"
+
+    if (canvasRef.current) {
+      const gifPlayer = new GifPlayer(canvasRef.current)
+      gifPlayerRef.current = gifPlayer
+
+      gifPlayer.loadGif(gifUrl)
+        .then(() => {
+          gifPlayer.play()
+        })
+        .catch((error) => console.error("Error loading GIF:", error))
+    }
+
+    return () => {
+      if (gifPlayerRef.current) {
+        gifPlayerRef.current.destroy()
+      }
+    }
+  }, [])
+
+  // Update speed without restarting
+  useEffect(() => {
+    if (gifPlayerRef.current) {
+      gifPlayerRef.current.setSpeed(gifSpeed)
+    }
+  }, [gifSpeed])
+
   return (
     <Box bg="gray.900" minH="100vh" color="white">
       <Container maxW="container.md" py={{ base: "8", md: "16" }} px={{ base: "4", md: "6" }}>
@@ -41,12 +76,36 @@ export default function Home() {
             w="100%"
           >
             <Heading size="xl">hi i'm beckett :)</Heading>
-            <Image
-              src="https://cdn.shopify.com/s/files/1/0830/0947/0774/files/beckettSpinsSmall.gif?v=1753905746"
-              alt="Beckett spinning gif"
-              boxSize={{ md: "200px" }}
-              borderRadius="md"
-            />
+            <Box>
+              <canvas
+                ref={canvasRef}
+                style={{
+                  borderRadius: "md",
+                  width: "200px",
+                  height: "auto",
+                }}
+              />
+              <Box w={{ base: "200px", md: "200px" }} mt="3">
+                <Text fontSize="sm" color="gray.400" mb="2">
+                  Speed: {gifSpeed.toFixed(1)}x
+                </Text>
+                <Slider.Root
+                  width="200px"
+                  value={[gifSpeed]}
+                  onValueChange={(details) => setGifSpeed(details.value[0])}
+                  min={0.1}
+                  max={5}
+                  step={0.1}
+                >
+                  <Slider.Control>
+                    <Slider.Track>
+                      <Slider.Range />
+                    </Slider.Track>
+                    <Slider.Thumbs />
+                  </Slider.Control>
+                </Slider.Root>
+              </Box>
+            </Box>
           </Box>
 
           <Box w="100%">
