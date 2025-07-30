@@ -138,7 +138,7 @@ export default function Home() {
                     <Text fontSize="sm" color="gray.400" wordBreak="break-word">Simple affiliate marketing app for Shopify. Track referrals, manage affiliates, auto-pay commissions.</Text>
                     <Text fontSize="sm" color="gray.400" mt="2" wordBreak="break-word">Features: Custom commissions, coupon tracking, PayPal integration, multi-level marketing.</Text>
                     <Text fontSize="sm" color="gray.400" mt="2">Rating: 5.0 (6 reviews)</Text>
-                    <Link href="https://apps.shopify.com/affilitrak" color="blue.300" fontSize="sm" display="inline-flex" alignItems="center" mt="2" flexWrap="wrap">
+                    <Link href="https://apps.shopify.com/affilitrak" color="blue.300" fontSize="sm" display="inline-flex" alignItems="center" mt="2" flexWrap="wrap" target="_blank">
                       View on Shopify App Store
                       <Icon as={FiExternalLink} ml="1" boxSize="3" />
                     </Link>
@@ -152,7 +152,7 @@ export default function Home() {
             <Text fontWeight="bold">check out my Shopify blog:</Text>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap="4" mt="4">
               <Card.Root asChild>
-                <Link href="/shopify/post1">
+                <Link href="#">
                   <Card.Header>
                     <Heading size="md">still need to write the post</Heading>
                   </Card.Header>
