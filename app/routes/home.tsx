@@ -34,7 +34,20 @@ export default function Home() {
             mx="auto"
           />
 
-          <Heading size="xl">hi i'm beckett :)</Heading>
+          <Box
+            flexDirection={{ base: "column", md: "row" }}
+            alignItems="center"
+            gap="4"
+            w="100%"
+          >
+            <Heading size="xl">hi i'm beckett :)</Heading>
+            <Image
+              src="https://cdn.shopify.com/s/files/1/0830/0947/0774/files/beckettSpinsSmall.gif?v=1753905746"
+              alt="Beckett spinning gif"
+              boxSize={{ md: "200px" }}
+              borderRadius="md"
+            />
+          </Box>
 
           <Box w="100%">
             <Text fontWeight="bold">currently working on:</Text>
@@ -82,10 +95,10 @@ export default function Home() {
               <Card.Root asChild>
                 <Link href="/shopify/post1">
                   <Card.Header>
-                    <Heading size="md">placeholder for now</Heading>
+                    <Heading size="md">still need to write the post</Heading>
                   </Card.Header>
                   <Card.Body>
-                    <Text fontSize="sm" color="gray.400">still need to write the post</Text>
+                    <Text fontSize="sm" color="gray.400">be patient pls</Text>
                   </Card.Body>
                 </Link>
               </Card.Root>
