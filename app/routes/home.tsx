@@ -94,7 +94,7 @@ export default function Home() {
                   value={[gifSpeed]}
                   onValueChange={(details) => setGifSpeed(details.value[0])}
                   min={0.1}
-                  max={5}
+                  max={10}
                   step={0.1}
                 >
                   <Slider.Control>
@@ -218,8 +218,19 @@ export default function Home() {
             </Link>
           </Box>
 
+          <Box w="100%" mt="6">
+            <Text mb="4">here's the macbook with a broken screen in the corner of my room that i'm using to host this website</Text>
+            <Image
+              src="https://cdn.shopify.com/s/files/1/0830/0947/0774/files/IMG_7440.jpg?v=1753909349"
+              alt="MacBook with broken screen"
+              boxSize={{ base: "220px", md: "250px" }}
+              borderRadius="md"
+            />
+          </Box>
+
         </VStack>
       </Container>
     </Box>
   )
 }
+
