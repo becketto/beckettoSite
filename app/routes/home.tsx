@@ -94,7 +94,7 @@ export default function Home() {
                   value={[gifSpeed]}
                   onValueChange={(details) => setGifSpeed(details.value[0])}
                   min={0.1}
-                  max={10}
+                  max={25}
                   step={0.1}
                 >
                   <Slider.Control>
