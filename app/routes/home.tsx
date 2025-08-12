@@ -62,7 +62,7 @@ export default function Home() {
         <VStack align="start" gap={{ base: "6", md: "8" }} fontSize={{ base: "md", md: "lg" }}>
 
           <Image
-            src="https://pbs.twimg.com/profile_images/1872747037055135744/_vkyVzSW_400x400.jpg"
+            src="https://cdn.shopify.com/s/files/1/0830/0947/0774/files/lighthousePfp.png?v=1755030786"
             alt="Beckett Oliphant"
             borderRadius="full"
             boxSize={{ base: "120px", md: "150px" }}
