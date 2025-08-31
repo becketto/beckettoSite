@@ -31,6 +31,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX18F6M7DL"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-WX18F6M7DL');
+            `,
+          }}
+        />
       </head>
       <body style={{ backgroundColor: "#18181B", margin: 0, padding: 0, overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
         <Provider>
