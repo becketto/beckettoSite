@@ -149,15 +149,15 @@ export default function Home() {
           </Box>
 
           <Box w="100%">
-            <Text fontWeight="bold">check out my Shopify blog:</Text>
+            <Text fontWeight="bold">blog posts:</Text>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap="4" mt="4">
-              <Card.Root asChild>
-                <Link href="#">
+              <Card.Root asChild bg="gray.800" _hover={{ bg: "gray.700" }} transition="background 0.2s">
+                <Link href="/unfollow-script">
                   <Card.Header>
-                    <Heading size="md">still need to write the post</Heading>
+                    <Heading size="md">Auto-Confirm Unfollow Script for X</Heading>
                   </Card.Header>
                   <Card.Body>
-                    <Text fontSize="sm" color="gray.400">be patient pls</Text>
+                    <Text fontSize="sm" color="gray.400">Skip the confirmation dialog when unfollowing people on X.com with this Tampermonkey script.</Text>
                   </Card.Body>
                 </Link>
               </Card.Root>
