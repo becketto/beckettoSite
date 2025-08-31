@@ -138,8 +138,32 @@ export default function Home() {
                     <Text fontSize="sm" color="gray.400" wordBreak="break-word">Simple affiliate marketing app for Shopify. Track referrals, manage affiliates, auto-pay commissions.</Text>
                     <Text fontSize="sm" color="gray.400" mt="2" wordBreak="break-word">Features: Custom commissions, coupon tracking, PayPal integration, multi-level marketing.</Text>
                     <Text fontSize="sm" color="gray.400" mt="2">Rating: 5.0 (6 reviews)</Text>
-                    <Link href="https://apps.shopify.com/affilitrak" color="blue.300" fontSize="sm" display="inline-flex" alignItems="center" mt="2" flexWrap="wrap" target="_blank">
+                    <Link
+                      href="https://apps.shopify.com/affilitrak"
+                      color="blue.300"
+                      fontSize="sm"
+                      display="inline-flex"
+                      alignItems="center"
+                      mt="2"
+                      flexWrap="wrap"
+                      target="_blank"
+                    >
                       View on Shopify App Store
+                      <Icon as={FiExternalLink} ml="1" boxSize="3" />
+                    </Link>
+                    <Link style={{ marginLeft: "30px" }}
+                      href="https://bravoapps.dev"
+                      color="gray.300"
+                      fontSize="sm"
+                      display="inline-flex"
+                      alignItems="center"
+                      mt="2"
+                      ml="3"
+                      flexWrap="wrap"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit app site
                       <Icon as={FiExternalLink} ml="1" boxSize="3" />
                     </Link>
                   </Box>
