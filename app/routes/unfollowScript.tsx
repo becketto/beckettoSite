@@ -183,6 +183,14 @@ export default function UnfollowScript() {
                                     The script will now automatically work on X.com.
                                 </Text>
                             </Box>
+
+                            <Box as="li" mb="6">
+                                <Text fontWeight="bold" mb="2">If it doesn't work</Text>
+                                <Text color="gray.400">
+                                    Restart tampermonkey by going to &gt; tampermonkey &gt; dashboard &gt; settings <br />
+                                    Set <u>Config Mode</u> to "advanced", scroll to bottom, click "restart tampermonkey".
+                                </Text>
+                            </Box>
                         </Box>
                     </Box>
                 </VStack>
