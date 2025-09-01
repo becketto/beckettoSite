@@ -59,14 +59,75 @@ const userScript = `// ==UserScript==
     observer.observe(document.body, { childList: true, subtree: true });
 })();`
 
+const bonusScript = `// ==UserScript==
+// @name         Hide Mutual Follows on X Following List
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Automatically hides users who follow you back ("Follows you") in your X.com following list to focus on one-way follows during a purge.
+// @author       Beckett
+// @match        https://x.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    console.log('Hide Mutual Follows Script Loaded');  // Confirm script injection
+
+    // Function to check and hide a single user cell
+    function hideMutualFollow(cell) {
+        const followIndicator = cell.querySelector('[data-testid="userFollowIndicator"]');
+        if (followIndicator && followIndicator.textContent.trim() === 'Follows you') {
+            cell.style.display = 'none';
+            console.log('Hid a mutual follow cell');  // For debugging
+        }
+    }
+
+    // Initial scan for existing cells on page load
+    document.querySelectorAll('[data-testid="cellInnerDiv"]').forEach(hideMutualFollow);
+
+    // Use MutationObserver to watch for new cells added (e.g., as you scroll)
+    const observer = new MutationObserver((mutations) => {
+        console.log('Observer triggered by DOM change');  // For debugging
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node instanceof HTMLElement) {
+                    // Check if the added node is a user cell or contains one
+                    if (node.getAttribute('data-testid') === 'cellInnerDiv') {
+                        hideMutualFollow(node);
+                    } else {
+                        // Scan for nested user cells
+                        node.querySelectorAll('[data-testid="cellInnerDiv"]').forEach(hideMutualFollow);
+                    }
+                }
+            });
+        });
+    });
+
+    // Observe the body for changes (subtree for dynamic loads)
+    observer.observe(document.body, { childList: true, subtree: true });
+    console.log('Observer initialized and watching for changes');  // Confirm setup
+})();`
+
 export default function UnfollowScript() {
     const [copied, setCopied] = useState(false)
+    const [bonusCopied, setBonusCopied] = useState(false)
 
     const copyToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(userScript)
             setCopied(true)
             setTimeout(() => setCopied(false), 2000)
+        } catch (err) {
+            console.error('Failed to copy text: ', err)
+        }
+    }
+
+    const copyBonusToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(bonusScript)
+            setBonusCopied(true)
+            setTimeout(() => setBonusCopied(false), 2000)
         } catch (err) {
             console.error('Failed to copy text: ', err)
         }
@@ -193,8 +254,50 @@ export default function UnfollowScript() {
                             </Box>
                         </Box>
                     </Box>
+
+                    {/* Bonus Script Section */}
+
+                    <Box mb="6">
+                        <Text fontWeight="bold" mb="2">Bonus script</Text>
+                        <Text color="gray.400">
+                            Bonus script: Hide everyone who follows you back (Implementation is the same)
+                        </Text>
+                    </Box>
+
+                    <Card.Root bg="gray.800" w="100%" mb="6">
+                        <Card.Header>
+                            <HStack justify="space-between" w="100%">
+                                <Text fontWeight="bold">Bonus Userscript Code</Text>
+                                <Button
+                                    size="sm"
+                                    onClick={copyBonusToClipboard}
+                                    bg={bonusCopied ? "green.600" : "blue.600"}
+                                    color="white"
+                                    _hover={{ bg: bonusCopied ? "green.700" : "blue.700" }}
+                                >
+                                    <Icon as={bonusCopied ? FiCheck : FiCopy} mr="2" />
+                                    {bonusCopied ? "Copied!" : "Copy Script"}
+                                </Button>
+                            </HStack>
+                        </Card.Header>
+                        <Card.Body pt="0">
+                            <Code
+                                display="block"
+                                whiteSpace="pre-wrap"
+                                p="4"
+                                borderRadius="md"
+                                bg="gray.900"
+                                color="gray.100"
+                                fontSize="sm"
+                                w="100%"
+                                overflowX="auto"
+                            >
+                                {bonusScript}
+                            </Code>
+                        </Card.Body>
+                    </Card.Root>
                 </VStack>
             </Container>
-        </Box>
+        </Box >
     )
 }
