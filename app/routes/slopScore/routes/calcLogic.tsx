@@ -1,4 +1,6 @@
-import { Box, Heading, VStack, Text, Code, HStack } from "@chakra-ui/react"
+import { Box, Heading, VStack, Text, Code, HStack, IconButton } from "@chakra-ui/react"
+import { useNavigate } from "react-router"
+import { HiArrowLeft } from "react-icons/hi"
 
 export function meta() {
     return [
@@ -7,6 +9,12 @@ export function meta() {
 }
 
 export default function CalcLogic() {
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return (
         <Box
             minH="100vh"
@@ -30,6 +38,21 @@ export default function CalcLogic() {
                     p="8"
                 >
                     <VStack gap="6" textAlign="left" alignItems="start">
+                        {/* Back Button */}
+                        <IconButton
+                            onClick={handleGoBack}
+                            variant="ghost"
+                            size="lg"
+                            color="gray.300"
+                            borderRadius="full"
+                            _hover={{ color: "white", bg: "gray.700" }}
+                            _active={{ bg: "gray.600" }}
+                            aria-label="Go back"
+                            alignSelf="flex-start"
+                        >
+                            <HiArrowLeft size="24" />
+                        </IconButton>
+
                         {/* Header */}
                         <Heading
                             fontSize="4xl"
