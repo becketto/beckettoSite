@@ -4,9 +4,10 @@ import {
     Heading,
     Link,
     Text,
-    VStack
+    VStack,
+    Spinner
 } from "@chakra-ui/react"
-import { useLoaderData, Link as RemixLink, useNavigate, useSearchParams } from "react-router"
+import { useLoaderData, Link as RemixLink, useNavigate, useSearchParams, useNavigation } from "react-router"
 import type { LoaderFunctionArgs } from "react-router"
 import prisma from "../../../lib/db.server"
 import LeaderboardSearch from "../components/LeaderboardSearch"
@@ -159,6 +160,35 @@ export default function Leaderboard() {
     const data = useLoaderData<typeof loader>();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    const navigation = useNavigation();
+
+    // Show loading state when navigating to this route or submitting forms (when loader is running)
+    if (navigation.state === "loading" || navigation.state === "submitting") {
+        return (
+            <Box
+                minH="100vh"
+                bg="gray.900"
+                color="white"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                p="8"
+            >
+                <VStack gap="4">
+                    <Spinner
+                        borderWidth="4px"
+                        animationDuration="0.65s"
+                        color="blue.400"
+                        size="xl"
+                    />
+                    <Text fontSize="lg" color="gray.300">
+                        Loading leaderboard...
+                    </Text>
+                </VStack>
+            </Box>
+        );
+    }
 
     // Use the global top score for percentage calculation
     const topScore = data.globalTopScore || 0;
