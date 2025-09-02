@@ -19,7 +19,7 @@ import { getTweets } from "../../../lib/services/getTweets"
 import { useRef, useEffect } from "react"
 import html2canvas from "html2canvas"
 import { LuCopy } from "react-icons/lu"
-import { toaster } from "../components/ui/toaster"
+import { toaster, Toaster } from "../components/ui/toaster"
 import { calculatePercentageScore, getSignalColor, getSignalLabel, getSignalColorScheme } from "../../../lib/utils/scoreUtils"
 import LoadingScreen from "../components/LoadingScreen"
 import ShareableCard from "../components/ShareableCard"
@@ -567,6 +567,7 @@ export default function SignalToNoise() {
                     totalUsers={data.totalUsers}
                 />
             </Box>
+            <Toaster />
         </Box >
     )
 }
