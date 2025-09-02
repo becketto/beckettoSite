@@ -185,6 +185,16 @@ export default function Home() {
                   </Card.Body>
                 </Link>
               </Card.Root>
+              <Card.Root asChild bg="gray.800" _hover={{ bg: "gray.700" }} transition="background 0.2s">
+                <Link href="/slop-score">
+                  <Card.Header>
+                    <Heading size="md">Slop Score Calculator</Heading>
+                  </Card.Header>
+                  <Card.Body>
+                    <Text fontSize="sm" color="gray.400">Are you posting slop? Check and see.</Text>
+                  </Card.Body>
+                </Link>
+              </Card.Root>
             </SimpleGrid>
             <Link href="/shopify" color="blue.300" fontSize="sm" mt="2" display="block">See all posts →</Link>
           </Box>
