@@ -138,20 +138,24 @@ export default function ShareableCard({
                 </VStack>
 
                 {/* Main Content */}
-                <VStack gap="12" flex="1" justifyContent="center">
+                <VStack gap="8" flex="1" justifyContent="center">
                     {/* Slop Score */}
-                    <VStack gap="4">
-                        <Text color="gray.300" fontSize="4xl" fontWeight="medium">
-                            Slop Score
-                        </Text>
-                        <Text
-                            fontSize="9xl"
-                            fontWeight="black"
-                            color={getSignalColor(percentageScore)}
-                            lineHeight="0.9"
-                            textAlign="center"
-                        >
-                            {percentageScore}%
+                    <VStack gap="12">
+                        <VStack gap="1">
+                            <Text color="gray.300" fontSize="4xl" fontWeight="medium">
+                                Slop Score
+                            </Text>
+                            <Text
+                                fontSize="8xl"
+                                fontWeight="black"
+                                color={getSignalColor(percentageScore)}
+                                lineHeight="0.9"
+                                textAlign="center"
+                            >
+                                {percentageScore}%
+                            </Text></VStack>
+                        <Text color="gray.400" fontSize="3xl" textAlign="center" fontWeight="medium">
+                            {displayName || username}'s posts are {percentageScore}% slop
                         </Text>
                     </VStack>
 

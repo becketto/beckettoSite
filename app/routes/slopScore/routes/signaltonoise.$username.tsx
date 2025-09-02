@@ -359,6 +359,9 @@ export default function SignalToNoise() {
                                 >
                                     {percentageScore}%
                                 </Text>
+                                <Text color="gray.400" fontSize="md">
+                                    {data.displayName || data.username}'s posts are {percentageScore}% slop
+                                </Text>
                                 {/* <Badge
                                     colorScheme={getSignalColorScheme(percentageScore)}
                                     fontSize="md"
