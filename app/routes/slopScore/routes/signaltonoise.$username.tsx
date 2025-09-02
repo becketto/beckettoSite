@@ -18,7 +18,7 @@ import type { LoaderFunctionArgs } from "react-router"
 import { getTweets } from "../../../lib/services/getTweets"
 import { useRef, useEffect } from "react"
 import html2canvas from "html2canvas"
-import { LuCopy } from "react-icons/lu"
+import { LuCopy, LuDownload } from "react-icons/lu"
 import { toaster, Toaster } from "../components/ui/toaster"
 import { calculatePercentageScore, getSignalColor, getSignalLabel, getSignalColorScheme } from "../../../lib/utils/scoreUtils"
 import LoadingScreen from "../components/LoadingScreen"
@@ -115,6 +115,33 @@ export default function SignalToNoise() {
 
 
 
+    // Helper function to detect Safari
+    const isSafari = () => {
+        if (typeof window === 'undefined' || !navigator) return false;
+        return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    };
+
+    // Helper function to check clipboard API support
+    const supportsClipboardImages = () => {
+        if (typeof window === 'undefined' || !navigator) return false;
+        return !!(
+            navigator.clipboard &&
+            typeof navigator.clipboard.write === 'function' &&
+            'ClipboardItem' in window
+        );
+    };
+
+    // Helper function to download image
+    const downloadImage = (canvas: HTMLCanvasElement, filename: string) => {
+        if (typeof window === 'undefined' || !document) return;
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     const copyCardAsImage = async () => {
         if (!hiddenCardRef.current) return;
 
@@ -141,29 +168,45 @@ export default function SignalToNoise() {
                 }
             });
 
-            canvas.toBlob(async (blob) => {
-                if (blob) {
-                    try {
-                        await navigator.clipboard.write([
-                            new ClipboardItem({ 'image/png': blob })
-                        ]);
-                        toaster.create({
-                            title: "Copied to clipboard!",
-                            description: "Your slop score card has been copied as an image.",
-                            type: "success",
-                            duration: 3000,
-                        });
-                    } catch (err) {
-                        console.error('Failed to copy image to clipboard:', err);
-                        toaster.create({
-                            title: "Copy failed",
-                            description: "Could not copy image to clipboard. Try using a different browser.",
-                            type: "error",
-                            duration: 5000,
-                        });
+            // Check if we can use clipboard API
+            if (supportsClipboardImages() && !isSafari()) {
+                canvas.toBlob(async (blob) => {
+                    if (blob) {
+                        try {
+                            await navigator.clipboard.write([
+                                new ClipboardItem({ 'image/png': blob })
+                            ]);
+                            toaster.create({
+                                title: "Copied to clipboard!",
+                                description: "Your slop score card has been copied as an image.",
+                                type: "success",
+                                duration: 3000,
+                            });
+                        } catch (err) {
+                            console.error('Failed to copy image to clipboard:', err);
+                            // Fallback to download
+                            downloadImage(canvas, `slop-score-${data.username}.png`);
+                            toaster.create({
+                                title: "Downloaded image!",
+                                description: "Your slop score card has been downloaded since clipboard copy isn't supported.",
+                                type: "info",
+                                duration: 4000,
+                            });
+                        }
                     }
-                }
-            }, 'image/png');
+                }, 'image/png');
+            } else {
+                // Safari and other browsers - download instead
+                downloadImage(canvas, `slop-score-${data.username}.png`);
+                toaster.create({
+                    title: "Downloaded image!",
+                    description: isSafari()
+                        ? "Safari doesn't support clipboard images, so the image has been downloaded instead."
+                        : "Your slop score card has been downloaded.",
+                    type: "info",
+                    duration: 4000,
+                });
+            }
         } catch (error) {
             console.error('Failed to capture card as image:', error);
             toaster.create({
@@ -385,8 +428,8 @@ export default function SignalToNoise() {
                                     }}
                                 >
                                     <HStack gap="2">
-                                        <LuCopy />
-                                        <Text>Copy as Image</Text>
+                                        {isSafari() ? <LuDownload /> : <LuCopy />}
+                                        <Text>{isSafari() ? "Save Image" : "Copy as Image"}</Text>
                                     </HStack>
                                 </Button>
 
@@ -473,8 +516,8 @@ export default function SignalToNoise() {
                                             }}
                                         >
                                             <HStack gap="2">
-                                                <LuCopy />
-                                                <Text>Copy as Image</Text>
+                                                {isSafari() ? <LuDownload /> : <LuCopy />}
+                                                <Text>{isSafari() ? "Save Image" : "Copy as Image"}</Text>
                                             </HStack>
                                         </Button>
                                     </Box>
