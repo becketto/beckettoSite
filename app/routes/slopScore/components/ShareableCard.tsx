@@ -177,7 +177,7 @@ export default function ShareableCard({
                 {/* Footer Branding */}
                 <VStack gap="2" pt="6">
                     <Text fontSize="2xl" color="gray.400" textAlign="center" fontWeight="medium">
-                        becketto.com/slopscore
+                        becketto.com/slop-score
                     </Text>
                 </VStack>
             </VStack>
