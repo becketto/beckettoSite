@@ -26,7 +26,7 @@ export default function LeaderboardUserCard({ analysis, rank, topScore }: Leader
 
     return (
         <RemixLink
-            to={`/slop-score/signaltonoise/${analysis.username}`}
+            to={`/slop-score/analysis/${analysis.username}`}
             style={{ width: '100%' }}
         >
             <Box

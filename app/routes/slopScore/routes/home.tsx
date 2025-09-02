@@ -13,7 +13,7 @@ export default function Home() {
   const navigation = useNavigation();
 
   // Show loading screen when navigating to analysis
-  if (navigation.state === "loading" && navigation.location?.pathname.includes("/signaltonoise/")) {
+  if (navigation.state === "loading" && navigation.location?.pathname.includes("/analysis/")) {
     return <LoadingScreen />;
   }
 
@@ -23,7 +23,7 @@ export default function Home() {
     const username = formData.get("username") as string;
 
     if (username) {
-      navigate(`/slop-score/signaltonoise/${username}`);
+      navigate(`/slop-score/analysis/${username}`);
     }
   };
 

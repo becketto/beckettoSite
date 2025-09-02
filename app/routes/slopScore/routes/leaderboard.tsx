@@ -228,11 +228,18 @@ export default function Leaderboard() {
                     <Text fontSize="lg" color="gray.300">
                         Rankings are relative to the person with the lowest slop score
                     </Text>
-                    <RemixLink to="/slop-score">
-                        <Link color="blue.400" textDecoration="underline">
-                            Analyze Your Account
-                        </Link>
-                    </RemixLink>
+                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        <RemixLink to="/slop-score">
+                            <Link color="blue.400" textDecoration="underline">
+                                Analyze Your Account
+                            </Link>
+                        </RemixLink>
+                        <RemixLink to="/slop-score/calc-logic">
+                            <Link color="blue.400" textDecoration="underline">
+                                View Calculation Logic
+                            </Link>
+                        </RemixLink>
+                    </div>
                 </VStack>
 
                 {/* Search with Sort Toggle */}
@@ -375,6 +382,22 @@ export default function Leaderboard() {
                         Back to Top 10
                     </Button>
                 )}
+
+                {/* Footer */}
+                <Box textAlign="center" pt="0">
+                    <Text fontSize="sm" color="gray.400">
+                        Created by{" "}
+                        <Link
+                            href="https://x.com/ecombeckett"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color="blue.400"
+                            _hover={{ color: "blue.300", textDecoration: "underline" }}
+                        >
+                            @ecombeckett
+                        </Link>
+                    </Text>
+                </Box>
             </VStack>
         </Box>
     )

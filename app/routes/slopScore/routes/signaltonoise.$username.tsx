@@ -73,7 +73,7 @@ export default function SignalToNoise() {
             });
 
             // Redirect back to the user page without refresh parameter
-            navigate(`/slop-score/signaltonoise/${params.username}`, { replace: true });
+            navigate(`/slop-score/analysis/${params.username}`, { replace: true });
         }
     }, [data, navigate, params.username]);
 
@@ -410,7 +410,7 @@ export default function SignalToNoise() {
                                     </Button>
                                 </RemixLink>
 
-                                <RemixLink to={`/slop-score/signaltonoise/${data.username}?refresh=true`} style={{ width: '100%' }}>
+                                <RemixLink to={`/slop-score/analysis/${data.username}?refresh=true`} style={{ width: '100%' }}>
                                     <Button
                                         variant="outline"
                                         colorScheme="gray"
@@ -505,7 +505,7 @@ export default function SignalToNoise() {
                                     </Box>
 
                                     <Box w="calc(50% - 6px)">
-                                        <RemixLink to={`/slop-score/signaltonoise/${data.username}?refresh=true`} style={{ width: '100%', display: 'block' }}>
+                                        <RemixLink to={`/slop-score/analysis/${data.username}?refresh=true`} style={{ width: '100%', display: 'block' }}>
                                             <Button
                                                 variant="outline"
                                                 colorScheme="gray"
@@ -529,6 +529,22 @@ export default function SignalToNoise() {
                             </VStack>
                         </Box>
                     </VStack>
+                </Box>
+
+                {/* Footer */}
+                <Box textAlign="center" pt="0">
+                    <Text fontSize="sm" color="gray.400">
+                        Created by{" "}
+                        <Link
+                            href="https://x.com/ecombeckett"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color="blue.400"
+                            _hover={{ color: "blue.300", textDecoration: "underline" }}
+                        >
+                            @ecombeckett
+                        </Link>
+                    </Text>
                 </Box>
             </VStack>
 
