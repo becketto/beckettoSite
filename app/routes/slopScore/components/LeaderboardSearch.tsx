@@ -28,9 +28,9 @@ export default function LeaderboardSearch({ initialValue = '', onSearch, onClear
 
     return (
         <Box w="full" maxW="4xl">
-            <HStack gap="3" w="full">
+            <HStack gap={{ base: "2", md: "3" }} w="full">
                 <Input
-                    placeholder="Search by username or display name..."
+                    placeholder="Search User"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                     onKeyPress={handleKeyPress}
@@ -58,10 +58,10 @@ export default function LeaderboardSearch({ initialValue = '', onSearch, onClear
                     _active={{ bg: "gray.200" }}
                     borderRadius="full"
                     h="48px"
-                    px="6"
+                    px={{ base: "3", md: "6" }}
                     fontSize="md"
                     fontWeight="medium"
-                    minW="24"
+                    minW={{ base: "16", md: "24" }}
                 >
                     Search
                 </Button>
@@ -71,7 +71,7 @@ export default function LeaderboardSearch({ initialValue = '', onSearch, onClear
                     colorScheme="blue"
                     borderRadius="full"
                     h="48px"
-                    px="6"
+                    px={{ base: "3", md: "6" }}
                     fontSize="md"
                     fontWeight="medium"
                     color="blue.400"
@@ -81,7 +81,7 @@ export default function LeaderboardSearch({ initialValue = '', onSearch, onClear
                         borderColor: "blue.300",
                         bg: "blue.900"
                     }}
-                    minW="20"
+                    minW={{ base: "16", md: "20" }}
                 >
                     Clear
                 </Button>

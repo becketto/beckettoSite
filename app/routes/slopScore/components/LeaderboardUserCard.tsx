@@ -39,17 +39,18 @@ export default function LeaderboardUserCard({ analysis, rank, topScore }: Leader
                 borderRadius="3xl"
                 cursor="pointer"
             >
-                <HStack justify="space-between" align="center">
-                    <HStack gap="3">
+                <HStack justify="space-between" align="center" w="full">
+                    <HStack gap="3" flex="1" minW="0">
                         <Text
                             fontSize="xl"
                             fontWeight="bold"
                             color={rank === 1 ? "yellow.400" : rank === 2 ? "gray.300" : rank === 3 ? "orange.400" : "gray.500"}
                             minW="10"
+                            flexShrink="0"
                         >
                             #{rank}
                         </Text>
-                        <Circle size="40px" bg="gray.600" overflow="hidden">
+                        <Circle size="40px" bg="gray.600" overflow="hidden" flexShrink="0">
                             {analysis.profilePicture ? (
                                 <Image
                                     src={analysis.profilePicture}
@@ -64,13 +65,24 @@ export default function LeaderboardUserCard({ analysis, rank, topScore }: Leader
                                 </Text>
                             )}
                         </Circle>
-                        <VStack gap="0" align="start">
+                        <VStack gap="0" align="start" flex="1" minW="0">
                             {analysis.displayName && (
-                                <Text color="white" fontWeight="semibold" fontSize="md">
+                                <Text
+                                    color="white"
+                                    fontWeight="semibold"
+                                    fontSize="md"
+                                    isTruncated
+                                    maxW="full"
+                                >
                                     {analysis.displayName}
                                 </Text>
                             )}
-                            <Text color="gray.400" fontSize="sm">
+                            <Text
+                                color="gray.400"
+                                fontSize="sm"
+                                isTruncated
+                                maxW="full"
+                            >
                                 @{analysis.username}
                             </Text>
                         </VStack>
@@ -80,6 +92,9 @@ export default function LeaderboardUserCard({ analysis, rank, topScore }: Leader
                         fontSize="xl"
                         fontWeight="bold"
                         color={getSignalColor(percentageScore)}
+                        flexShrink="0"
+                        minW="16"
+                        textAlign="right"
                     >
                         {percentageScore}%
                     </Text>

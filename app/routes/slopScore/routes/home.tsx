@@ -53,7 +53,7 @@ export default function Home() {
             {/* Header */}
             <VStack gap="3">
               <Heading
-                fontSize="4xl"
+                fontSize={{ base: "3xl", md: "4xl" }}
                 fontWeight="medium"
                 color="white"
               >
@@ -94,9 +94,10 @@ export default function Home() {
                     _active={{ bg: "gray.200" }}
                     borderRadius="full"
                     h="48px"
-                    px="6"
+                    px={{ base: "4", md: "6" }}
                     fontSize="md"
                     fontWeight="medium"
+                    minW={{ base: "80px", md: "auto" }}
                   >
                     Analyze
                   </Button>

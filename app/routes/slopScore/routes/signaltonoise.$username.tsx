@@ -279,11 +279,25 @@ export default function SignalToNoise() {
                                 {/* Username and Title - spaced for overlaid profile pic */}
                                 <VStack gap="1" pt="12">
                                     {data.displayName && (
-                                        <Heading fontSize="3xl" fontWeight="bold" color="white">
+                                        <Heading
+                                            fontSize="3xl"
+                                            fontWeight="bold"
+                                            color="white"
+                                            textAlign="center"
+                                            wordBreak={{ base: "break-word", md: "normal" }}
+                                            whiteSpace={{ base: "normal", md: "nowrap" }}
+                                        >
                                             {data.displayName}
                                         </Heading>
                                     )}
-                                    <Text color={data.displayName ? "gray.400" : "white"} fontSize={data.displayName ? "lg" : "3xl"} fontWeight={data.displayName ? "medium" : "bold"}>
+                                    <Text
+                                        color={data.displayName ? "gray.400" : "white"}
+                                        fontSize={data.displayName ? "lg" : "3xl"}
+                                        fontWeight={data.displayName ? "medium" : "bold"}
+                                        textAlign="center"
+                                        wordBreak={{ base: "break-word", md: "normal" }}
+                                        whiteSpace={{ base: "normal", md: "nowrap" }}
+                                    >
                                         @{data.username}
                                     </Text>
                                 </VStack>

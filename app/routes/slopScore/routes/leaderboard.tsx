@@ -219,10 +219,10 @@ export default function Leaderboard() {
             color="white"
             p="8"
         >
-            <VStack gap="8" w="full" maxW="4xl" mx="auto">
+            <VStack gap={{ base: "6", md: "8" }} w="full" maxW="4xl" mx="auto">
                 {/* Header */}
                 <VStack gap="4" textAlign="center">
-                    <Heading fontSize="4xl" fontWeight="medium">
+                    <Heading fontSize={{ base: "3xl", md: "4xl" }} fontWeight="medium">
                         Slop Score Leaderboard
                     </Heading>
                     <Text fontSize="lg" color="gray.300">
@@ -237,7 +237,7 @@ export default function Leaderboard() {
 
                 {/* Search with Sort Toggle */}
                 <VStack gap="3" w="full" maxW="4xl">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
                         {/* Sort Toggle Button */}
                         <Button
                             onClick={() => handleSortChange(data.sortBy === 'slop' ? 'signal' : 'slop')}
