@@ -162,8 +162,10 @@ export default function Leaderboard() {
     const [searchParams] = useSearchParams();
     const navigation = useNavigation();
 
-    // Show loading state when navigating to this route or submitting forms (when loader is running)
-    if (navigation.state === "loading" || navigation.state === "submitting") {
+    // Show loading state when navigating to this specific route or performing actions (when loader is running)
+    if ((navigation.state === "loading" || navigation.state === "submitting") &&
+        (navigation.location?.pathname.includes("/leaderboard") ||
+            window.location.pathname.includes("/leaderboard"))) {
         return (
             <Box
                 minH="100vh"
@@ -183,7 +185,7 @@ export default function Leaderboard() {
                         size="xl"
                     />
                     <Text fontSize="lg" color="gray.300">
-                        Loading leaderboard...
+                        Loading...
                     </Text>
                 </VStack>
             </Box>

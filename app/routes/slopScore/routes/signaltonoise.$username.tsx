@@ -54,8 +54,8 @@ export default function SignalToNoise() {
     const shareableCardRef = useRef<HTMLDivElement>(null);
     const hiddenCardRef = useRef<HTMLDivElement>(null);
 
-    // Show loading screen when navigating to this route (when loader is running)
-    if (navigation.state === "loading") {
+    // Show loading screen when navigating to this specific route (when loader is running)
+    if (navigation.state === "loading" && navigation.location?.pathname.includes("/analysis/")) {
         return <LoadingScreen />;
     }
 
