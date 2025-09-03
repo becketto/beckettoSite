@@ -218,6 +218,16 @@ export default function Home() {
             >
               Affilitrak
             </Link>
+            {", "}
+            <Link
+              href="https://x.com/hibakod"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @hibakod
+            </Link>
           </Text>
         </Box>
       </VStack>
