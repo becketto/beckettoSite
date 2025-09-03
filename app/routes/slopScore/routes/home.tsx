@@ -117,7 +117,7 @@ export default function Home() {
               textAlign="center"
             >
               <Text fontSize="sm" color="blue.200">
-                Ran out of credits, if you want to send me money to buy more credits, I'll set it back up. I'll add your name to a list of suporters at the bottom of this page if you send more than $5.{" "}
+                Ran out of credits, will put money from this link towards credits. Supporters over $5 will be listed below.{" "}
                 <Link
                   href="https://buymeacoffee.com/ecombeckett"
                   target="_blank"
