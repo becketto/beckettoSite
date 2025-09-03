@@ -117,7 +117,7 @@ export default function Home() {
               textAlign="center"
             >
               <Text fontSize="sm" color="blue.200">
-                Ran out of credits, if you want to send me money to buy more credits, I'll set it back up.{" "}
+                Ran out of credits, if you want to send me money to buy more credits, I'll set it back up. I'll add your name to a list of suporters at the bottom of this page if you send more than $5.{" "}
                 <Link
                   href="https://buymeacoffee.com/ecombeckett"
                   target="_blank"
@@ -170,6 +170,22 @@ export default function Home() {
               _hover={{ color: "blue.300", textDecoration: "underline" }}
             >
               becketto.com
+            </Link>
+          </Text>
+        </Box>
+
+        {/* Supporters */}
+        <Box textAlign="center">
+          <Text fontSize="sm" color="gray.400">
+            Supporters:{" "}
+            <Link
+              href="https://x.com/ecombeckett"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @ecombeckett
             </Link>
           </Text>
         </Box>
