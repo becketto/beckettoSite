@@ -199,75 +199,30 @@ export default function Home() {
         <Box textAlign="center">
           <Text fontSize="sm" color="gray.400">
             Supporters:{" "}
-            <Link
-              href="https://x.com/ecombeckett"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @ecombeckett
-            </Link>
-            {", "}
-            <Link
-              href="https://apps.shopify.com/affilitrak"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              Affilitrak
-            </Link>
-            {", "}
-            <Link
-              href="https://x.com/hibakod"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @hibakod
-            </Link>
-            {", "}
-            <Link
-              href="https://x.com/LilWriggle"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @LilWriggle
-            </Link>
-            {", "}
-            <Link
-              href="https://x.com/the_jess_who"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @the_jess_who
-            </Link>
-            {", "}
-            <Link
-              href="https://x.com/specialkdelslay"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @specialkdelslay
-            </Link>
-            {", "}
-            <Link
-              href="https://x.com/Hermitual"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="blue.400"
-              _hover={{ color: "blue.300", textDecoration: "underline" }}
-            >
-              @Hermitual
-            </Link>
+            {[
+              { name: "@ecombeckett", url: "https://x.com/ecombeckett" },
+              { name: "Affilitrak", url: "https://apps.shopify.com/affilitrak" },
+              { name: "@hibakod", url: "https://x.com/hibakod" },
+              { name: "@LilWriggle", url: "https://x.com/LilWriggle" },
+              { name: "@the_jess_who", url: "https://x.com/the_jess_who" },
+              { name: "@specialkdelslay", url: "https://x.com/specialkdelslay" },
+              { name: "@Hermitual", url: "https://x.com/Hermitual" },
+              { name: "@ubermummy", url: "https://x.com/ubermummy" },
+              { name: "@haydendevs", url: "https://x.com/haydendevs" },
+            ].map((supporter, index, array) => (
+              <span key={supporter.name}>
+                <Link
+                  href={supporter.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="blue.400"
+                  _hover={{ color: "blue.300", textDecoration: "underline" }}
+                >
+                  {supporter.name}
+                </Link>
+                {index < array.length - 1 ? ", " : ""}
+              </span>
+            ))}
           </Text>
         </Box>
       </VStack>
