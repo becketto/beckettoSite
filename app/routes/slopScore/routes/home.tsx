@@ -258,6 +258,16 @@ export default function Home() {
             >
               @specialkdelslay
             </Link>
+            {", "}
+            <Link
+              href="https://x.com/Hermitual"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @Hermitual
+            </Link>
           </Text>
         </Box>
       </VStack>
