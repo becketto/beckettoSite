@@ -228,6 +228,36 @@ export default function Home() {
             >
               @hibakod
             </Link>
+            {", "}
+            <Link
+              href="https://x.com/LilWriggle"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @LilWriggle
+            </Link>
+            {", "}
+            <Link
+              href="https://x.com/the_jess_who"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @the_jess_who
+            </Link>
+            {", "}
+            <Link
+              href="https://x.com/specialkdelslay"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              @specialkdelslay
+            </Link>
           </Text>
         </Box>
       </VStack>
