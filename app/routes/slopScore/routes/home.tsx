@@ -88,21 +88,47 @@ export default function Home() {
                   />
                   <Button
                     type="submit"
-                    bg="white"
-                    color="black"
-                    _hover={{ bg: "gray.100" }}
-                    _active={{ bg: "gray.200" }}
+                    bg="gray.500"
+                    color="gray.300"
+                    _hover={{ bg: "gray.500", cursor: "not-allowed" }}
+                    _active={{ bg: "gray.500" }}
                     borderRadius="full"
                     h="48px"
                     px={{ base: "4", md: "6" }}
                     fontSize="md"
                     fontWeight="medium"
                     minW={{ base: "80px", md: "auto" }}
+                    disabled
                   >
                     Analyze
                   </Button>
                 </HStack>
               </form>
+            </Box>
+
+            {/* Credits Message */}
+            <Box
+              w="full"
+              bg="blue.900"
+              borderColor="blue.600"
+              borderWidth="1px"
+              borderRadius="lg"
+              p="4"
+              textAlign="center"
+            >
+              <Text fontSize="sm" color="blue.200">
+                Ran out of credits, if you want to send me money to buy more credits, I'll set it back up.{" "}
+                <Link
+                  href="https://buymeacoffee.com/ecombeckett"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="blue.300"
+                  textDecoration="underline"
+                  _hover={{ color: "blue.100" }}
+                >
+                  https://buymeacoffee.com/ecombeckett
+                </Link>
+              </Text>
             </Box>
 
           </VStack>
