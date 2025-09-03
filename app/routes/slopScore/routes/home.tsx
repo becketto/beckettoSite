@@ -9,6 +9,9 @@ export function meta() {
 }
 
 export default function Home() {
+  // Toggle this to enable/disable credits mode
+  const outOfCredits = false;
+
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -88,47 +91,22 @@ export default function Home() {
                   />
                   <Button
                     type="submit"
-                    bg="gray.500"
-                    color="gray.300"
-                    _hover={{ bg: "gray.500", cursor: "not-allowed" }}
-                    _active={{ bg: "gray.500" }}
+                    bg={outOfCredits ? "gray.500" : "white"}
+                    color={outOfCredits ? "gray.300" : "black"}
+                    _hover={outOfCredits ? { bg: "gray.500", cursor: "not-allowed" } : { bg: "gray.100" }}
+                    _active={outOfCredits ? { bg: "gray.500" } : { bg: "gray.200" }}
                     borderRadius="full"
                     h="48px"
                     px={{ base: "4", md: "6" }}
                     fontSize="md"
                     fontWeight="medium"
                     minW={{ base: "80px", md: "auto" }}
-                    disabled
+                    disabled={outOfCredits}
                   >
                     Analyze
                   </Button>
                 </HStack>
               </form>
-            </Box>
-
-            {/* Credits Message */}
-            <Box
-              w="full"
-              bg="blue.900"
-              borderColor="blue.600"
-              borderWidth="1px"
-              borderRadius="lg"
-              p="4"
-              textAlign="center"
-            >
-              <Text fontSize="sm" color="blue.200">
-                Ran out of credits, will put money from this link towards credits. Supporters over $5 will be listed below.{" "}
-                <Link
-                  href="https://buymeacoffee.com/ecombeckett"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color="blue.300"
-                  textDecoration="underline"
-                  _hover={{ color: "blue.100" }}
-                >
-                  https://buymeacoffee.com/ecombeckett
-                </Link>
-              </Text>
             </Box>
 
           </VStack>
@@ -147,6 +125,49 @@ export default function Home() {
             </Link>
           </RemixLink>
         </HStack>
+
+        {/* Donation Message */}
+        {outOfCredits ? (
+          <Box
+            w="full"
+            maxW="lg"
+            bg="blue.900"
+            borderColor="blue.600"
+            borderWidth="1px"
+            borderRadius="lg"
+            p="4"
+            textAlign="center"
+          >
+            <Text fontSize="sm" color="blue.200">
+              Ran out of credits, will put money from this link towards credits. Supporters over $5 will be listed below.{" "}
+              <Link
+                href="https://buymeacoffee.com/ecombeckett"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="blue.300"
+                textDecoration="underline"
+                _hover={{ color: "blue.100" }}
+              >
+                https://buymeacoffee.com/ecombeckett
+              </Link>
+            </Text>
+          </Box>
+        ) : (
+          <Box textAlign="center">
+            <Text fontSize="sm" color="gray.400">
+              Buy more credits ($5+ gets your name and link below):{" "}
+              <Link
+                href="https://buymeacoffee.com/ecombeckett"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                color="blue.400"
+                _hover={{ color: "blue.300", textDecoration: "underline" }}
+              >
+                Buy me a coffee
+              </Link>
+            </Text>
+          </Box>
+        )}
 
         {/* Creator Credit */}
         <Box textAlign="center">
@@ -186,6 +207,16 @@ export default function Home() {
               _hover={{ color: "blue.300", textDecoration: "underline" }}
             >
               @ecombeckett
+            </Link>
+            {", "}
+            <Link
+              href="https://apps.shopify.com/affilitrak"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="blue.400"
+              _hover={{ color: "blue.300", textDecoration: "underline" }}
+            >
+              Affilitrak
             </Link>
           </Text>
         </Box>
