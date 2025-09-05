@@ -10,7 +10,14 @@ import type { Route } from "./+types/root"
 import { Provider } from "./components/ui/provider"
 
 export const links: Route.LinksFunction = () => [
-  { rel: "icon", href: "/favicon.png" },
+  // Favicon links for better Google recognition
+  { rel: "icon", href: "/favicon.ico", sizes: "any" },
+  { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+  { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+  { rel: "icon", href: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "144x144" },
+  { rel: "manifest", href: "/site.webmanifest" },
+  // Fonts
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -29,6 +36,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Favicon fallback in root */}
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#18181B" />
+        <meta name="theme-color" content="#18181B" />
         <Meta />
         <Links />
         {/* Google tag (gtag.js) */}
