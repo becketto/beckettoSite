@@ -211,6 +211,7 @@ export default function Home() {
               { name: "@haydendevs", url: "https://x.com/haydendevs" },
               { name: "@clique_on_fleek", url: "https://x.com/clique_on_fleek" },
               { name: "@TheeTeaMan", url: "https://x.com/theeteaman" },
+              { name: "@process_eli", url: "https://x.com/process_eli" },
             ].map((supporter, index, array) => (
               <span key={supporter.name}>
                 <Link
