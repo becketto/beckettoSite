@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://becketto.com/sitemap.xml
+

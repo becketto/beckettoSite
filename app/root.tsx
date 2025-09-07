@@ -36,6 +36,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://becketto.com" />
         {/* Favicon fallback in root */}
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="msapplication-TileColor" content="#18181B" />
