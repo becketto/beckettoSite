@@ -7,4 +7,6 @@ export default [
     route("slop-score/analysis/:username", "routes/slopScore/routes/signaltonoise.$username.tsx"),
     route("slop-score/leaderboard", "routes/slopScore/routes/leaderboard.tsx"),
     route("slop-score/calc-logic", "routes/slopScore/routes/calcLogic.tsx"),
+    route("awards", "routes/awards.tsx"),
+    // route("template", "routes/template.tsx"),
 ] satisfies RouteConfig
