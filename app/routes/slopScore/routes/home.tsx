@@ -214,6 +214,7 @@ export default function Home() {
               { name: "@process_eli", url: "https://x.com/process_eli" },
               { name: "@rraj421", url: "https://x.com/rraj421" },
               { name: "@Dratnos", url: "https://x.com/dratnos" },
+              { name: "@Website_Plug", url: "https://x.com/Website_Plug" },
             ].map((supporter, index, array) => (
               <span key={supporter.name}>
                 <Link
